@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div style="margin-left: 33%; margin-top: 4rem;">
+    <h3 id="timer" style="font-size: 5rem;" >00:00:00</h3><br>
+    
+    <div class="button">
+    <button id="start" onclick="startTimer()" > start</button>
+    <button id="stop" onclick="stopTimer()" >stop</button>
+    <button id="restart" onclick="restartTimer()" >restart</button>
+    </div>
+</div>
+    <script>
+
+let timer  = document.getElementById("timer").innerHTML;
+let StopWatch;
+
+let [hour,minute,second] = [0,0,0]
+
+// timer starting function
+let startTimer = ()=>{
+StopWatch = setInterval(clock,1000)
+}
+
+//clock function
+
+let clock = ()=>{
+    second++;
+    if(second === 60){
+        minute ++;
+        second = 0;
+
+        if (minute===60){
+            hour++;
+            minute = 0;
+
+        }
+    }
+    
+    document.getElementById("timer").innerHTML = `${hour}:${minute}:${second}`
+}
+
+
+// StopTimer function
+
+let stopTimer = ()=>{
+    clearTimeout(StopWatch)
+}
+
+
+//restart Timer function
+let restartTimer = ()=>{
+    clearTimeout(StopWatch)
+    document.getElementById("timer").innerHTML = `00:00:00`
+
+}
+
+
+
+
+    </script>
+</body>
+</html>
